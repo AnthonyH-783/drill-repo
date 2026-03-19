@@ -1,7 +1,14 @@
+import "../css/Favorites.css";
+import { useMovieContext } from "../contexts/MovieContext";
+import {MovieCard} from "../components/MovieCard";
+
 function Favorites(){
-    return <div className="favorites-empty">
-        <h2>No Favorite movies yet</h2>
-        <p>Start adding movies</p>
+    const {favorites} = useMovieContext();
+    return <div className="favorites">
+        <h2>Your Favorites</h2>
+        <div className="movie-grid">
+            {favorites.map((movie) => <MovieCard movie={movie} key={movie.id}></MovieCard>)}
+        </div>
     </div>
 }
 
